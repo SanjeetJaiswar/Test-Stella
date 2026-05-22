@@ -27,14 +27,14 @@
 		<variables>
 			<stock name="population">
 				<eqn>100</eqn>
-				<inflow>Flow_1</inflow>
+				<inflow>Flow_3</inflow>
 			</stock>
-			<flow name="Flow 1">
+			<flow name="Flow 3">
 				<eqn>population*BIRTH_RATE</eqn>
 				<non_negative/>
 			</flow>
 			<aux name="BIRTH RATE">
-				<eqn>0.01</eqn>
+				<eqn>0.1</eqn>
 			</aux>
 		</variables>
 		<views>
@@ -134,11 +134,11 @@
 				<aux x="142.667" y="194" name="BIRTH RATE"/>
 				<connector uid="1" angle="77.1957">
 					<from>population</from>
-					<to>Flow_1</to>
+					<to>Flow_3</to>
 				</connector>
 				<connector uid="2" angle="44.4543">
 					<from>BIRTH_RATE</from>
-					<to>Flow_1</to>
+					<to>Flow_3</to>
 				</connector>
 			</view>
 		</views>
