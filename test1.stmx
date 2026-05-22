@@ -2,13 +2,13 @@
 <xmile version="1.0" xmlns="http://docs.oasis-open.org/xmile/ns/XMILE/v1.0" xmlns:isee="http://iseesystems.com/XMILE">
 	<header>
 		<smile version="1.0" namespace="std, isee"/>
-		<name>test1</name>
+		<name>test2</name>
 		<uuid>e917b28d-68bf-46e7-ace9-6c7c0f44e1f2</uuid>
 		<vendor>isee systems, inc.</vendor>
 		<product version="4.1.1" isee:build_number="3772" isee:saved_by_v1="true" lang="en">Stella Architect</product>
 	</header>
 	<ai_information>
-		<status verified="true" trusted="true" tampered="false" uses="false" analyzed="false" log_truncated="false" timestamp="1779431867" algorithm="ed25519" keyurl="https://iseesystems.com/keys/stella01.txt" want_var_info="true" want_var_status="false" want_log="false" sampling="1" signature="ASkpWaPbkEoHueFGUr4W/uBuA7MfpiEpOA48Z/b7jvaiooRAMOK/0dE6J9t3s+4awQNyCKGqvUX+4JQn6HoxBA=="/>
+		<status verified="true" trusted="true" tampered="false" uses="false" analyzed="false" log_truncated="false" timestamp="1779432307" algorithm="ed25519" keyurl="https://iseesystems.com/keys/stella01.txt" want_var_info="true" want_var_status="false" want_log="false" sampling="1" signature="nmt0BRdjSIOKtdaAI6ExulfnssZnyky9fRRsVRtQlmrLD+HoYY1fmwFnV9tOsSky8K4B/z7IsWHI+9IiHj7VCg=="/>
 	</ai_information>
 	<sim_specs isee:sim_duration="1.5" isee:run_prefix="Run" isee:simulation_delay="0.125" isee:restore_on_start="false" method="Euler" time_units="Months" isee:instantaneous_flows="false" isee:ignore_module_errors="false" isee:strict_units="true" isee:loop_scores="true" isee:loop_exhaustive_allowed="1000">
 		<start>0</start>
@@ -27,7 +27,15 @@
 		<variables>
 			<stock name="population">
 				<eqn>100</eqn>
+				<inflow>Flow_1</inflow>
 			</stock>
+			<flow name="Flow 1">
+				<eqn>population*BIRTH_RATE</eqn>
+				<non_negative/>
+			</flow>
+			<aux name="BIRTH RATE">
+				<eqn>0.01</eqn>
+			</aux>
 		</variables>
 		<views>
 			<style color="black" background="white" font_style="normal" font_weight="normal" text_decoration="none" text_align="center" vertical_text_align="center" font_color="black" font_family="Arial" font_size="10pt" padding="2" border_color="black" border_width="thin" border_style="none">
@@ -117,8 +125,22 @@
 					<table color="black" background="#E0E0E0" text_align="right" font_size="12pt" orientation="vertical" wrap_text="false" isee:auto_fit="true" isee:use_alternate_row_colors="false" isee:unlimited_table_length="false" blank_column_width="80" column_width="160" interval="1" report_balances="beginning" report_flows="instantaneous" header_font_style="normal" header_font_weight="normal" header_text_decoration="none" header_text_align="center" header_vertical_text_align="center" header_font_color="black" header_font_family="Arial" header_font_size="12pt" header_text_padding="2" header_text_border_color="black" header_text_border_width="thin" header_text_border_style="none"/>
 				</style>
 				<stock x="290.667" y="110.667" name="population"/>
+				<flow x="207.75" y="108.667" name="Flow 1">
+					<pts>
+						<pt x="147.333" y="108.667"/>
+						<pt x="268.167" y="108.667"/>
+					</pts>
+				</flow>
+				<aux x="142.667" y="194" name="BIRTH RATE"/>
+				<connector uid="1" angle="77.1957">
+					<from>population</from>
+					<to>Flow_1</to>
+				</connector>
+				<connector uid="2" angle="44.4543">
+					<from>BIRTH_RATE</from>
+					<to>Flow_1</to>
+				</connector>
 			</view>
 		</views>
 	</model>
 </xmile>
-
